@@ -12,6 +12,7 @@ import java.util.List;
 public class ShoppingListAdapter extends RecyclerView.Adapter<ItemHolder> {
     Context context;
     List<ShoppingItem> items;
+    private OnClickListener onClickListener;
 
     public ShoppingListAdapter(Context context, List<ShoppingItem> items) {
         this.context = context;
@@ -22,7 +23,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ItemHolder> {
     @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.item_view, parent, false);
-        return new ItemHolder(itemView);
+        return new ItemHolder(itemView, onClickListener);
     }
 
     @Override
@@ -33,5 +34,13 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ItemHolder> {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void setOnClickListener(OnClickListener listener) {
+        this.onClickListener = listener;
+    }
+
+    public interface OnClickListener {
+        void onClick(int position);
     }
 }

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,5 +44,13 @@ public class ShoppingListActivity extends AppCompatActivity {
                 new DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         );
         items_view.setAdapter(adapter);
+
+        adapter.setOnClickListener(new ShoppingListAdapter.OnClickListener() {
+            @Override
+            public void onClick(int position) {
+                String msg = "Has clicat: " + items.get(position).getName();
+                Toast.makeText(ShoppingListActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
