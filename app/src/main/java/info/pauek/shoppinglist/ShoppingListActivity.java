@@ -7,12 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingListActivity extends AppCompatActivity {
 
     // Model
-    List<String> items;
+    List<ShoppingItem> items;
 
     // Referències a elements de la pantalla
     private RecyclerView items_view;
@@ -23,6 +24,8 @@ public class ShoppingListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
+
+        items = new ArrayList<>();
 
         items_view = findViewById(R.id.items_view);
         btn_add = findViewById(R.id.btn_add);
