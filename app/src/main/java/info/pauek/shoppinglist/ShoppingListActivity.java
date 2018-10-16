@@ -15,6 +15,11 @@ import java.util.List;
 
 public class ShoppingListActivity extends AppCompatActivity {
 
+    // TODO: 1. Afegir un CheckBox a cada ítem, per marcar o desmarcar els ítems (al model també!)
+    // TODO: 2. Que es puguin afegir elements (+ treure els inicials)
+    // TODO: 3. Afegir un menú amb una opció per esborrar de la llista tots els marcats.
+    // TODO: 4. Que es pugui esborrar un element amb LongClick (cal fer OnLongClickListener)
+
     // Model
     List<ShoppingItem> items;
 
