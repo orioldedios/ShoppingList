@@ -2,6 +2,7 @@ package info.pauek.shoppinglist;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     private RecyclerView items_view;
     private ImageButton btn_add;
     private EditText edit_box;
+    private ShoppingListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +28,16 @@ public class ShoppingListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_list);
 
         items = new ArrayList<>();
+        items.add(new ShoppingItem("Potatoes"));
+        items.add(new ShoppingItem("Toilet Paper"));
 
         items_view = findViewById(R.id.items_view);
         btn_add = findViewById(R.id.btn_add);
         edit_box = findViewById(R.id.edit_box);
+
+        adapter = new ShoppingListAdapter(this, items);
+
+        items_view.setLayoutManager(new LinearLayoutManager(this));
+        items_view.setAdapter(adapter);
     }
 }
