@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -37,9 +38,6 @@ public class ShoppingListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_list);
 
         items = new ArrayList<>();
-        items.add(new ShoppingItem("Potatoes"));
-        items.add(new ShoppingItem("Toilet Paper"));
-        //items.get(0).setSelected(true);
 
         items_view = findViewById(R.id.items_view);
         btn_add = findViewById(R.id.btn_add);
@@ -65,5 +63,15 @@ public class ShoppingListActivity extends AppCompatActivity {
                 adapter.notifyItemChanged(position);
             }
         });
+    }
+
+    public void onClickAddButton(View view) {
+        String stringName = edit_box.getText().toString();
+        if(!stringName.isEmpty())
+        {
+            items.add(new ShoppingItem(stringName));
+            edit_box.setText("");
+            adapter.notifyItemInserted(items.size());
+        }
     }
 }
