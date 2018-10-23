@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -63,6 +66,11 @@ public class ShoppingListActivity extends AppCompatActivity {
                 adapter.notifyItemChanged(position);
             }
         });
+
+        View.OnLongClickListener()
+        {
+
+        }
     }
 
     public void onClickAddButton(View view) {
@@ -73,5 +81,34 @@ public class ShoppingListActivity extends AppCompatActivity {
             edit_box.setText("");
             adapter.notifyItemInserted(items.size());
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater  = getMenuInflater();
+        inflater.inflate(R.menu.shoppinglist,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.Delete_Selected:
+                for (int i = 0;i<items.size();)
+                {
+                    if(items.get(i).isSelected())
+                    {
+                        items.remove(i);
+                        adapter.notifyItemRemoved(i);
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+                break;
+        }
+        return true;
     }
 }
