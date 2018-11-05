@@ -67,15 +67,10 @@ public class ShoppingListActivity extends AppCompatActivity {
             }
         });
 
-        adapter.setOnLongClickListener(new ShoppingListAdapter.OnLongClickListener() {
-            @Override
-            public void onLongClick(int position) {
-                String msg = "Deleting: " + items.get(position).getName();
-                Toast.makeText(ShoppingListActivity.this, msg, Toast.LENGTH_SHORT).show();
-                items.remove(position);
-                adapter.notifyItemChanged(position);
-            }
-        });
+        View.OnLongClickListener()
+        {
+
+        }
     }
 
     public void onClickAddButton(View view) {
