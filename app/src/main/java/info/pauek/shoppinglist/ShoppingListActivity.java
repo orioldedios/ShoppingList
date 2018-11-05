@@ -67,10 +67,15 @@ public class ShoppingListActivity extends AppCompatActivity {
             }
         });
 
-        View.OnLongClickListener()
-        {
-
-        }
+        adapter.setOnLongClickListener(new ShoppingListAdapter.OnLongClickListener() {
+            @Override
+            public void onLongClick(int position) {
+                String msg = "Deleting: " + items.get(position).getName();
+                Toast.makeText(ShoppingListActivity.this, msg, Toast.LENGTH_SHORT).show();
+                items.remove(position);
+                adapter.notifyItemRemoved(position);
+            }
+        });
     }
 
     public void onClickAddButton(View view) {
